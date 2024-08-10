@@ -28,6 +28,9 @@ result = "PostNL Scraper - Abel van Hulst\n:):):):):):):):):):)"
 
 for country in countries:
 
+    if country.alpha2 == "NL":
+        continue
+
     url = ("https://jouw.postnl.nl/online-versturen/api/country/"
            + country.alpha2 + "/productGroup/LetterBoxParcel/weightclass")
     response = requests.get(url)
