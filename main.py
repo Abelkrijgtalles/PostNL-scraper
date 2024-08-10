@@ -1,7 +1,8 @@
+import json
 import requests
 from iso3166 import countries
 
-result = "PostNL Scraper - Abel van Hulst\n:):):):):):):):):):)"
+result = []
 
 # def brief(country):
 #     url = ("https://jouw.postnl.nl/online-versturen/api/country/"
@@ -42,7 +43,7 @@ for country in countries:
             if ding["identifier"] == "50_0_00_0":
                 prijs = ding["minPrice"]
             elif ding["identifier"] == "50_1_00_0":
-                prijs = ding["minPrice"] - 1
+                prijs = ding["minPrice"] - 100
         if prijs == 0:
             print("Womp womp iets ging verkeerd bij " + country.name)
             print(data)
