@@ -38,20 +38,17 @@ for country in countries:
     if response.status_code == 200:
         data = response.json()
         prijs = 0
-        track_trace = False
         for ding in data:
             if ding["identifier"] == "50_0_00_0":
                 prijs = ding["minPrice"]
             elif ding["identifier"] == "50_1_00_0":
-                prijs = ding["minPrice"]
-                track_trace = True
+                prijs = ding["minPrice"] - 1
         if prijs == 0:
             print("Womp womp iets ging verkeerd bij " + country.name)
             print(data)
             result += "\n" + country.alpha2 + ": womp womp"
         else:
-            result += "\n" + country.alpha2 + ": " + str(prijs) + str(track_trace)
-
+            result += "\n" + country.alpha2 + ": " + str(prijs)
     else:
         print("Womp womp iets ging verkeerd bij " + country.name)
         print(response.status_code)
