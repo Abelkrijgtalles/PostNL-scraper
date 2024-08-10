@@ -84,3 +84,17 @@ for country in countries:
 
 with open("result.txt", "w") as result_file:
     print(zones, file=result_file)
+    print("\nZones:\n")
+    sorted_zones = sorted(zones, key=lambda x: x[1], reverse=False)
+    for zone in sorted_zones:
+        print("Zone " + str(sorted_zones.index(zone) + 1), file=result_file)
+        print("---", file=result_file)
+        print("Countries:", file=result_file)
+        for country in zone[0]:
+            print(country)
+        print("0-100g: " + str(zone[1]), file=result_file)
+        print("100-500g: " + str(zone[2]), file=result_file)
+        print("500-1000g: " + str(zone[3]), file=result_file)
+        print("1000-2000g: " + str(zone[4]), file=result_file)
+        print("---\n", file=result_file)
+    result_file.close()
